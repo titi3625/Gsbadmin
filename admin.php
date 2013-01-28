@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (!isset($_SESSION['login_admin'])) {
+if($_SESSION['auth'] == 'no') {
 	header ('Location: ../');
 	exit();
 }
@@ -40,9 +40,9 @@ if (!isset($_SESSION['login_admin'])) {
 						<div class="post-bgbtm">
 							<h2 class="title"><a href="#"><center>Bienvenue sur GSB</center></a></h2>
 
-							<p>Vous etes connecté au service d'administration - <a href=deconnexion.php?deconnect>Déconnexion</a></p> 
+							<p>Vous êtes connecté au service d'administration - <a href=deconnexion.php?deconnect>Déconnexion</a></p> 
 
-							<br/><br/><br/><br/>
+							<br/><br/>
 							
 						</div>
 					</div>

@@ -5,17 +5,17 @@
 		session_start();  
 		session_unset();  
 		session_destroy();  
-		print('<script>alert("Déconnexion reussie");</script>');
-		header("Refresh: 0; URL=index.php" ); 
+		echo '<script>alert("Déconnexion reussie");</script>';
+		header("Refresh: 0; URL=index.php"); 
 		exit(); 									
 	} 
 	else 
 	{
 		session_start();
-		if (!isset($_SESSION['login_admin'])) 
+		if($_SESSION['auth'] == 'no') 
 		{
-		header ('Location: index.php');
-		exit();
+			header('Location: index.php');
+			exit();
 		}
 	}
 ?>

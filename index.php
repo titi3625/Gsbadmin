@@ -6,7 +6,7 @@
 <title>GSB-Administration</title>
 <meta name="keywords" content="" />
 <meta name="description" content="" />
-<link href="stylealex.css" rel="stylesheet" type="text/css" media="screen" />
+<link rel="stylesheet" href="stylealex.css" />
 </head>
 <body>
 <div id="header">
@@ -14,7 +14,7 @@
 		<ul>
 			<li><a href="index.php" class="first">Accueil</a></li>
 			<li class="current_page_item"><a href="#">Connexion</a></li>
-			<li><a href="#">S'enrenegistrer</a></li>
+			<li><a href="#">S'enregistrer</a></li>
 			
 		</ul>
 	</div>
@@ -66,9 +66,7 @@
 
 								if ($login==null && $mdp==null)
 								{
-									//print('<script>alert("Aucunes données saisies");</script>');
-									//echo '<meta http-equiv="refresh" content="0; URL=../connexion.php">';
-									header ("Refresh: 3;URL=index.php");
+									header ("Refresh: 1;URL=index.php");
 									echo 'Aucunes données saisies';
 								}
 								else
@@ -103,7 +101,7 @@
 									}
 									else
 									{
-										header ("Refresh: 3;URL=index.php");
+										header ("Refresh: 1;URL=index.php");
 										echo 'Problème de connexion';
 										$_SESSION['auth'] = "no";
 									}
