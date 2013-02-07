@@ -483,8 +483,9 @@ hr {
 }
 
 #footer a {
-	
+
 }
+
 .tabs {
 	text-align: center;
 	height: 36px;
@@ -559,6 +560,12 @@ h1
 	color: black;
 }
 
+form label 
+{
+    display: inline-block;
+    width: 80px;
+}
+
 // mise en forme du formulaire
 
 .form_connexion {
@@ -578,14 +585,13 @@ h1
 	width: 200px;
 	height: 25px;
 	border: 1px solid #CCCCCC;
-	//border-radius: 5px;
+	padding-left: 5px;
 	box-shadow: 0px 0px 3px #cccccc inset;
 }
 
 .form_connexion table td input[type="text"]:focus, .form_connexion table td input[type="password"]:focus {
 	box-shadow: 0px 0px 5px #cccccc;
 }
-
 
 legend /* On met un peu plus en valeur les titres des fieldset */
 {
@@ -598,8 +604,8 @@ legend /* On met un peu plus en valeur les titres des fieldset */
 
 fieldset
 {
-	margin-bottom:15px; /* Une marge pour séparer les fieldsets */
-	background-color: Gainsboro;
+	margin-bottom:15px; /* Une marge pour séparer les fieldset */
+	background-color:Gainsboro;
 	border: 1px black solid;
 	border-radius: 10px;
 	text-shadow: 0px 2px 2px black;
@@ -609,9 +615,4 @@ fieldset
 {
 	overflow-x: scroll;
 	overflow-y:hidden; 
-}
-
-// mise en forme du petit loader rigolo :)
-.loader {
-	
 }

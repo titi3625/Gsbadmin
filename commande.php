@@ -1,6 +1,6 @@
 <?php
 session_start();
-if($_SESSION['auth'] == 'no') 
+if ($_SESSION['auth'] == 'no')
 {
 	header ('Location: admin.php');
 	exit();
@@ -17,7 +17,7 @@ else
 
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-	<title>Administration - Commande</title>
+<title>GSB-Administration</title>
 	<meta name="keywords" content="" />
 	<meta name="description" content="" />
 	<link href="styletibo.css" rel="stylesheet" type="text/css" media="screen" />
@@ -130,7 +130,7 @@ else
 										<caption>Statistiques</caption>
 										<tr>
 											<th style="padding:2px 5px;">Date</th>
-											<th style="padding:2px 5px;">Nombre de commande effectueés</th>
+											<th style="padding:2px 5px;">Nombre de commande effectuées</th>
 											
 										</tr>
 										<?php
@@ -184,7 +184,7 @@ else
 	</div>
 </div>
 <div id="footer">
-	<p>Projet PPE - 2012-2013 Copyright ThibaultCorp & PlopWorld</p>
+	<p>Projet PPE - 2012-2013</p>
 </div>
 <!-- end #footer -->
 	

@@ -11,7 +11,7 @@ elseif ($_SESSION['droit']!="client")
 }
 else
 {
-?>
+	?>
 	<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 	<html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
@@ -24,6 +24,7 @@ else
 		<script type="text/javascript" src="js/main.js"></script>
 
 		<script type="text/javascript" src="js/autocompletion/jquery-1.2.1.pack.js"></script>
+		<script type="text/javascript" src="js/autocompletion/suppr_autocomplete.js"></script>
 		<script type="text/javascript" src="js/autocompletion/autocompletion.js"></script>
 
 	</head>
@@ -116,7 +117,7 @@ else
 		</div>
 	</div>
 	<div id="footer">
-		<p>Projet PPE - 2012-2013</p>
+		<p>Projet PPE - 2012 - Ferreira ALexandre</p>
 	</div>
 	<!-- end #footer -->
 	</body>

@@ -6,7 +6,7 @@
 <title>GSB-Administration</title>
 <meta name="keywords" content="" />
 <meta name="description" content="" />
-<link rel="stylesheet" href="stylealex.css" />
+<link href="stylealex.css" rel="stylesheet" type="text/css" media="screen" />
 </head>
 <body>
 <div id="header">
@@ -35,7 +35,7 @@
 							
 							<?php
 							if(!isset($_GET['verif']))
-							{	
+							{
 							?>
 								
 							<form class="form_connexion" action="?verif" method="post" enctype="multipart/form-data">
@@ -54,9 +54,8 @@
 								</table>
 		    					<br/> 
 		    					<br/>
-		    					
 
-							<?php	
+							<?php
 							}
 							else
 							{
@@ -74,7 +73,7 @@
 									include("include/bdd.php");							
 									// Si tout va bien, on peut continuer
 
-									// On récupère tout le contenu de la table
+									// On récupère le login et mdp de la personne connecté
 									$req1 = $bdd->query("SELECT pseudo_admin, mdp_admin FROM ADMIN WHERE pseudo_admin='$login' AND mdp_admin='$mdp'");
 
 									$verif = $req1->fetch();
@@ -82,7 +81,7 @@
 									{
 										
 
-										// On récupère les informations de la personne connecté
+										// On récupère toutes les informations de l'utilisateur
 										$reponse = $bdd->query("SELECT * FROM ADMIN WHERE pseudo_admin='$login' and mdp_admin='$mdp'");
 
 										if ($donnees = $reponse->fetch())
@@ -112,6 +111,7 @@
 							?>
 
 							</form>
+							<br/><br/><br/><br/>
 							
 						</div>
 					</div>

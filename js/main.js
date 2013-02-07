@@ -1,7 +1,6 @@
 jQuery(function($) {
 	var ancre = window.location.hash;
 	$('.tabs').each(function() {
-
 		var current = null;
 		if(ancre != '' && $(this).find('a[href="'+ancre+'"]').length > 0) {
 			current = ancre;
@@ -13,16 +12,16 @@ jQuery(function($) {
 		$(current).siblings().hide();
 
 		$(this).find('a').click(function() {
-			var link = $(this).attr('href');
-			if(link == current) {
-				return false;
-			}
-			else {
-				$(this).siblings().removeClass('active');
-				$(this).addClass('active');
-				$(link).show().siblings().hide();
-				current = link;
-			}
+				var link = $(this).attr('href');
+				if(link == current) {
+					return false;
+				}
+				else {
+					$(this).siblings().removeClass('active');
+					$(this).addClass('active');
+					$(link).show().siblings().hide();
+					current = link;
+				}
 		});
 	});
 });

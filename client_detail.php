@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (!isset($_SESSION['login_admin'])) 
+if ($_SESSION['auth'] == 'no') 
 {
 	header ('Location: admin.php');
 	exit();
@@ -16,7 +16,7 @@ else
 	<html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-	<title>Concurrence by FCT</title>
+	<title>GSB-Administration</title>
 	<meta name="keywords" content="" />
 	<meta name="description" content="" />
 	<link href="stylealex.css" rel="stylesheet" type="text/css" media="screen" />
@@ -25,9 +25,9 @@ else
 	<div id="header">
 		<div id="menu">
 			<ul>
-				<li><a href="#" class="first">Accueil</a></li>
+				<li><a href="index.php" class="first">Accueil</a></li>
 				<li class="current_page_item"><a href="#">Connexion</a></li>
-				<li><a href="#">S'enrenegistrer</a></li>
+				<li><a href="#">S'enregistrer</a></li>
 				
 			</ul>
 		</div>

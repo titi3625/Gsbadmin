@@ -18,14 +18,14 @@
 		{
 		?>
 			<tr>
-				<th><a href=modifier.php?id=<?php echo $donnees['id_client']; ?>>Modifier</a></th>
+				<th><a href="modifier_client.php?id=<?php echo $donnees['id_client']; ?>">Modifier</a>/<a href="include/supprimer_client.php?id=<?php echo $donnees['id_client']; ?>" onclick="if (window.confirm('Etes vous sur de supprimer le client ?')){location.href='default.htm';return true;} else {return false;}">Supprimer</a></th>
 				<th><?php echo $donnees['id_client']; ?></th>
 				<th><?php echo $donnees['nom_client'] ?></th>
 				<th><?php echo $donnees['prenom_client']; ?></th>
 				<th><?php echo $donnees['tel_client']; ?></th>
 				<th><?php echo $donnees['email_client']; ?></th>
 				<th><?php echo $donnees['pseudo_client']; ?></th>
-				<th>Voir</th>
+				<th><a href="client_detail.php?id=<?php echo $donnees['id_client']; ?>">Voir</a></th>
 			</tr>
 		<?php
 		}
