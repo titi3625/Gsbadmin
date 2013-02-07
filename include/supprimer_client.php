@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (!isset($_SESSION['login_admin'])) 
+if ($_SESSION['auth'] == 'no') 
 {
 	header ('Location: admin.php');
 	exit();

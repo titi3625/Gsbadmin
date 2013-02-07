@@ -53,7 +53,7 @@ else
 							<div class="post-bgbtm">
 								<h2 class="title"><a href="#"><center>Gestion des Clients</center></a></h2>
 								<center>
-									<form action="#statist" method="post" enctype="multipart/form-data"><br/>
+									<form action="#recherche" method="post" enctype="multipart/form-data"><br/>
 										<label>Rechercher par nom : </label>
 										<input type="text" size="19" name="search" id="inputString" onkeyup="lookup(this.value);" onblur="fill();" />
 										<input type='submit' width='17' value='Rechercher'>
@@ -72,7 +72,7 @@ else
 									<a href="#num">Trier par numéro de client</a>
 									<a href="#alpha">Trier par ordre alphabétique</a>
 									<a href="#ajout">Ajouter un client</a>
-									<a href="#statist"></a>
+									<a href="#recherche"></a>
 								</div>
 
 								<div id="contenu">
@@ -84,7 +84,7 @@ else
 										<?php $reponse = $bdd->query('SELECT * FROM CLIENT ORDER BY nom_client ASC'); 
 										include("include/client.php");	?>
 									</div>
-									<div id="statist">
+									<div id="recherche">
 										<?php $reponse = $bdd->query("SELECT * FROM CLIENT WHERE nom_client LIKE  '%".strip_tags($_POST['search'])."%' "); 
 										include("include/client.php"); ?>
 									</div>
