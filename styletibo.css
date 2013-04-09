@@ -562,3 +562,7 @@ table caption {
 	background-image: -ms-linear-gradient(bottom, #3E81FB, #0153E7);
 	background-image: linear-gradient(bottom, #3E81FB, #0153E7);
 }
+
+.form_connexion {
+	height: 200px;
+}

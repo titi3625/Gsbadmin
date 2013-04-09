@@ -13,7 +13,7 @@ if($_SESSION['droit']=="commande")
 					<li><a href="produit.php">Gestion des produits</a></li>
 					<li><a href="#" onclick="alert('Vous avez pas les droits nécessaires');">Gestion des utilisateurs</a></li>
 				</ul>
-			</li>
+			</li
 		</ul>
 	</div>
 	<!-- end #sidebar -->
@@ -32,7 +32,7 @@ elseif($_SESSION['droit']=="client")
 					<li><a href="#" onclick="alert('Vous avez pas les droits nécessaires');">Gestion des produits</a></li>
 					<li><a href="client.php">Gestion des utilisateurs</a></li>
 				</ul>
-			</li>
+			</li
 		</ul>
 	</div>
 	<!-- end #sidebar -->

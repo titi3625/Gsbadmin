@@ -1,6 +1,6 @@
 <?php
 session_start();
-if ($_SESSION['auth'] == 'no')
+if (!isset($_SESSION['login_admin'])) 
 {
 	header ('Location: admin.php');
 	exit();
@@ -17,7 +17,7 @@ else
 
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-	<title>GSB-Administration</title>
+<title>GSB-Administration</title>
 	<meta name="keywords" content="" />
 	<meta name="description" content="" />
 	<link href="styletibo.css" rel="stylesheet" type="text/css" media="screen" />
@@ -55,16 +55,24 @@ else
 								<a href="#statist">Statistiques</a>
 							</div>
 
+
 							<div id="contenu">
 								
-								<div id="liste"> <!-- premier onglet - Liste des commandes -->	
+							
+								<div id="liste"> <!-- premier onglet - Liste des commandes -->
+
+								
+										
 									<label>Rechercher par nom : </label>
+
 									<input type="text" name="search" id="inputString" /> <!-- champs de recherche -->
+									
 									<a href="#" id="recherche" class="button">Rechercher</a> <!-- bouton de recherche et bouton reset -->
 									<a href="#" class="button" onclick="location.reload();">Reset</a>
-									
+										
+								
 									<!-- requete de liste de commande -->
-									<?php $reponse = $bdd->query('SELECT * FROM COMMANDE NATURAL JOIN POSSEDER NATURAL JOIN STATUT_COMMANDE NATURAL JOIN MODE_PAIEMENT'); ?>
+									<?php $reponse = $bdd->query('SELECT * FROM commande NATURAL JOIN posseder NATURAL JOIN statut_commande NATURAL JOIN mode_paiement'); ?>
 									
 									<table id="tablocommande">
 										<caption>Liste des commandes</caption>
@@ -105,13 +113,18 @@ else
 										</tbody>
 									</table>
 
+									<div id="reponsesearch">
+										
+									</div>
+
 									<div class="erreur">La recherche n'a retournée aucun resultat</div> <!-- erreur de recherche -->
 	
 								</div> <!-- fin du premier onglet -->
 
 								<div id="statist"> <!-- deuxieme onglet - statistique-->
 									<?php 
-									$reponse3 = $bdd->query('SELECT COUNT(id_commande) AS nbcomm, date_commande FROM COMMANDER GROUP BY date_commande ORDER BY date_commande DESC LIMIT 0, 7');
+									
+										$reponse3 = $bdd->query('SELECT COUNT(id_commande) AS nbcomm, date_commande FROM commander GROUP BY date_commande ORDER BY date_commande DESC LIMIT 0, 7');
 									?>
 									<table>
 										<caption>Statistiques</caption>
@@ -138,8 +151,8 @@ else
 									<br/>
 									<table>
 										<?php
-										$reponse4 = $bdd->query('SELECT COUNT(id_commande) AS nbcomm FROM POSSEDER NATURAL JOIN STATUT_COMMANDE WHERE id_statut_commande = 1');
-										$donnees4 = $reponse4->fetch();
+											$reponse4 = $bdd->query('SELECT COUNT(id_commande) AS nbcomm FROM posseder NATURAL JOIN statut_commande WHERE id_statut_commande = 1');
+											$donnees4 = $reponse4->fetch();
 										?>
 										<tr>
 											<th style="padding:2px 5px;">Nombre de commande en cours</th>
@@ -147,8 +160,8 @@ else
 											
 										</tr>
 										<?php
-										$reponse5 = $bdd->query('SELECT COUNT(id_commande) AS nbcommm FROM POSSEDER NATURAL JOIN STATUT_COMMANDE WHERE id_statut_commande = 2');
-										$donnees5 = $reponse5->fetch();
+											$reponse5 = $bdd->query('SELECT COUNT(id_commande) AS nbcommm FROM posseder NATURAL JOIN statut_commande WHERE id_statut_commande = 2');
+											$donnees5 = $reponse5->fetch();
 										?>
 										<tr>
 											<th style="padding:2px 5px;">Nombre de commande expédiées</th>
@@ -171,7 +184,7 @@ else
 	</div>
 </div>
 <div id="footer">
-	<p>Projet PPE - 2012-2013</p>
+	<p>Projet PPE - 2012 - Ferreira ALexandre</p>
 </div>
 <!-- end #footer -->
 	

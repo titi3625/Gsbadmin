@@ -12,9 +12,9 @@
 <div id="header">
 	<div id="menu">
 		<ul>
-			<li><a href="index.php" class="first">Accueil</a></li>
+			<li><a href="#" class="first">Accueil</a></li>
 			<li class="current_page_item"><a href="#">Connexion</a></li>
-			<li><a href="#">S'enregistrer</a></li>
+			<li><a href="#">S'enrenegistrer</a></li>
 			
 		</ul>
 	</div>
@@ -35,9 +35,7 @@
 							
 							<?php
 							if(!isset($_GET['verif']))
-							{
-							?>
-								
+							{	?>
 							<form class="form_connexion" action="?verif" method="post" enctype="multipart/form-data">
 								<table align="center">
 									<tr>
@@ -53,19 +51,21 @@
 									</tr>
 								</table>
 		    					<br/> 
-		    					<br/>
+		    					<br/>			
 
-							<?php
-							}
+								
+					<?php	}
 							else
 							{
 								
 								$login = $_POST['login'];
 								$mdp  = $_POST['mdp'];
 
-								if ($login==null && $mdp==null)
+								if ($login==null AND $mdp==null)
 								{
-									header ("Refresh: 1;URL=index.php");
+									//print('<script>alert("Aucunes données saisies");</script>');
+									//echo '<meta http-equiv="refresh" content="0; URL=../connexion.php">';
+									header ("Refresh: 3;URL=index.php");
 									echo 'Aucunes données saisies';
 								}
 								else
@@ -73,16 +73,16 @@
 									include("include/bdd.php");							
 									// Si tout va bien, on peut continuer
 
-									// On récupère le login et mdp de la personne connecté
-									$req1 = $bdd->query("SELECT pseudo_admin, mdp_admin FROM ADMIN WHERE pseudo_admin='$login' AND mdp_admin='$mdp'");
+									// On récupère tout le contenu de la table
+									$req1 = $bdd->query("SELECT pseudo_admin, mdp_admin FROM admin WHERE pseudo_admin='$login' AND mdp_admin='$mdp'");
 
 									$verif = $req1->fetch();
 									if ($login==$verif['pseudo_admin'] AND $mdp==$verif['mdp_admin']) // Vérification si login et mdp sont correct.
 									{
 										
 
-										// On récupère toutes les informations de l'utilisateur
-										$reponse = $bdd->query("SELECT * FROM ADMIN WHERE pseudo_admin='$login' and mdp_admin='$mdp'");
+										// On récupère tout le contenu de la table ADMIN
+										$reponse = $bdd->query("SELECT * FROM admin WHERE pseudo_admin='$login' and mdp_admin='$mdp'");
 
 										if ($donnees = $reponse->fetch())
 										{
@@ -94,13 +94,13 @@
 										}
 
 										$reponse->closeCursor(); // Termine le traitement de la requête
-										header ("Refresh: 1;URL=admin.php");
-										echo 'Connexion en cours';
+										header ("Refresh: 3;URL=admin.php");
+										echo '<center>Connexion en cours</center>';
 
 									}
 									else
 									{
-										header ("Refresh: 1;URL=index.php");
+										header ("Refresh: 3;URL=index.php");
 										echo 'Problème de connexion';
 										$_SESSION['auth'] = "no";
 									}
@@ -108,9 +108,9 @@
 								}	
 
 							}
-							?>
+								?>
 
-							</form>
+
 							<br/><br/><br/><br/>
 							
 						</div>
@@ -137,7 +137,7 @@
 	</div>
 </div>
 <div id="footer">
-	<p>Projet PPE - 2012-2013</p>
+	<p>Projet PPE - 2012 - Ferreira ALexandre</p>
 </div>
 <!-- end #footer -->
 </body>

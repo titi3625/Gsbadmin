@@ -9,6 +9,8 @@ jQuery(function($) {
 			$.post('include/recherche.php', {val: ""+val+""}, function(data) { // requete ajax utilisant recherche.php
 				$('#reponsesearch').html(data).show(); // on affiche le tableau du resultat de la recherche dans la div reponsesearch et on l'affiche
 			});
+			
+			
 		}
 		else {
 			alert("Vous devez saisir un nom à rechercher");

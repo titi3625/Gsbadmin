@@ -1,6 +1,6 @@
 ﻿<?php
 session_start();
-if ($_SESSION['auth'] == 'no') 
+if (!isset($_SESSION['login_admin'])) 
 {
 	header ('Location: admin.php');
 	exit();
@@ -48,7 +48,7 @@ else
 								<div class="post-bgbtm">
 									<h2 class="title"><a href="#"><center>Gestion des Clients : Modifier</center></a></h2><br/>
 											<?php include("include/bdd.php");
-											$reponse = $bdd->query("SELECT * FROM CLIENT WHERE id_client='".strip_tags($_GET['id'])."'");	?>
+											$reponse = $bdd->query("SELECT * FROM client WHERE id_client='".strip_tags($_GET['id'])."'");	?>
 											<?php
 											while ($donnees = $reponse->fetch())
 											{
@@ -77,7 +77,7 @@ else
 			</div>
 		</div>
 		<div id="footer">
-			<p>Projet PPE - 2012-2013</p>
+			<p>Projet PPE - 2012 - Ferreira ALexandre</p>
 		</div>
 		<!-- end #footer -->
 		</body>
@@ -87,7 +87,7 @@ else
 	else
 	{
 		include("include/bdd.php"); 
-		$bdd->exec("UPDATE CLIENT SET nom_client = '" . strip_tags($_POST['nom']). "', prenom_client = '" . strip_tags($_POST['prenom']). "', tel_client = '" . strip_tags($_POST['tel']). "', email_client = '" . strip_tags($_POST['mail']). "', pseudo_client = '" . strip_tags($_POST['pseudo']). "' WHERE id_client = ".strip_tags($_POST['id'])."");
+		$bdd->exec("UPDATE client SET nom_client = '" . strip_tags($_POST['nom']). "', prenom_client = '" . strip_tags($_POST['prenom']). "', tel_client = '" . strip_tags($_POST['tel']). "', email_client = '" . strip_tags($_POST['mail']). "', pseudo_client = '" . strip_tags($_POST['pseudo']). "' WHERE id_client = ".strip_tags($_POST['id'])."");
 		print('<script>alert("Client modifier avec succès");</script>');
 		header("Refresh: 0; URL=client.php" ); 								
 	}

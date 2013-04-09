@@ -8,7 +8,7 @@
 			
 			if(strlen(strip_tags($queryString)) >0) 
 			{
-				$reponse = $bdd->query("SELECT DISTINCT(nom_client) FROM CLIENT WHERE nom_client LIKE '$queryString%' LIMIT 10");
+				$reponse = $bdd->query("SELECT DISTINCT(nom_client) FROM client WHERE nom_client LIKE '$queryString%' LIMIT 10");
 				if($reponse) 
 				{
 					while ($donnees = $reponse->fetch()) 

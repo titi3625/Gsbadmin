@@ -1,6 +1,6 @@
 <?php
 session_start();
-if ($_SESSION['auth'] == 'no') 
+if (!isset($_SESSION['login_admin'])) 
 {
 	header ('Location: admin.php');
 	exit();
@@ -11,7 +11,7 @@ elseif ($_SESSION['droit']!="commande")
 }
 else
 {
-?>
+	?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 
@@ -22,6 +22,7 @@ else
 	<meta name="description" content="" />
 	<link href="stylelili.css" rel="stylesheet" type="text/css" media="screen" />
 </head>
+
 <body>
 <div id="header">
 	<div id="menu">
@@ -46,19 +47,22 @@ else
 					<div class="post-bgtop">
 						<div class="post-bgbtm">
 							<h2 class="title"><a href="produit.php"><center>Gestion des Produits</center></a></h2>
+
 							<?php include("include/connectionBDD.php"); ?>
 							
 							<br/><br/>
+
 							<div class="tabs">
 								<a href="#liste">Liste des produits</a>
 								<a href="#ajoutproduit">Ajout de produit</a>
 								<a href="#supprproduit">Supprimer un produit</a>
 							</div>
-							<div id="contenu">
 
-								<!-- onglet liste des clients -->
+
+							<div id="contenu">
+								
 								<div id="liste">
-									<?php $reponse = $bdd->query('SELECT * FROM PRODUIT'); ?>
+									<?php $reponse = $bdd->query('SELECT * FROM produit'); ?>
 									<table id="tablocommande">
 										<caption>Liste des produits</caption>
 										<thead>
@@ -86,81 +90,73 @@ else
 											}
 											$reponse->closeCursor();
 											?>
+											
 										</tbody>
 									</table>
+	
 								</div>
 
-								<!-- onglet ajout de produits -->
 								<div id="ajoutproduit">
 									<h2>Ajout d'un produit</h2>
-									<form method="post" action="produit.php#ajoutproduit">
+
+
+									<form method="post" action="include/ajouter_produit.php">
  
 										<table width="100%">
-											<tr>
-												<td><label for="nom_produit">Nom du produit :</label></td>
-												<td><input type="text" name="nom_produit" id="nom_produit" pattern="[A-Za-z0-9._-]{2,30}" required></td>
-											</tr>
-											<tr>
-												<td><label for="description_produit">Description du produit :</label></td>
-												<td><textarea name="description_produit" id="description_produit" pattern="[A-Za-z0-9._-]{2,1000}" required></textarea></td>
-											</tr>
-											<tr>
-												<td><label for="quantite_produit">Quantité de produit :</label></td>
-												<td><input type="text" name="quantite_produit" id="quantite_produit" pattern="[0-9]{1,20}" required></td>
-											</tr>
-											<tr>
-												<td><label for="prix_produit">Prix unitaire du produit :</label></td>
-												<td><input type="text" name="prix_produit" id="prix_produit" pattern="[0-9]{1,20}" required></td>
-											</tr>
-											<tr>
-												<td colspan="2" align="center"><input type=submit value=Ajouter id="submit" ></td>
-											</tr>
-										</table>	
-					
-										<?php
-										//Requête pour insérer les variables dans la base de donnée gsbadmin dans la table PRODUIT
-										$req = $bdd->prepare('INSERT INTO PRODUIT (nom_produit, description_produit, quantite_produit, prix_produit) VALUES (:nom_produit, :description_produit, :quantite_produit, :prix_produit)');
-										$req->execute(array(
-												'nom_produit' => @$_POST['nom_produit'],
-												'description_produit' => @$_POST['description_produit'],
-												'quantite_produit' => @$_POST['quantite_produit'],
-												'prix_produit' => @$_POST['prix_produit'],
-												));
-										?>
+												<tr>
+													<td><label for="nom_produit">Nom du produit :</label></td>
+													<td><input type="text" name="nom_produit" id="nom_produit" pattern="[A-Za-z0-9._-]{2,30}" required></td>
+												</tr>
+												<tr>
+													<td><label for="description_produit">Description du produit :</label></td>
+													<td><textarea name="description_produit" id="description_produit" pattern="[A-Za-z0-9._-]{2,1000}" required></textarea></td>
+												</tr>
+												<tr>
+													<td><label for="quantite_produit">Quantité de produit :</label></td>
+													<td><input type="text" name="quantite_produit" id="quantite_produit" pattern="[0-9]{1,20}" required></td>
+												</tr>
+												<tr>
+													<td><label for="prix_produit">Prix unitaire du produit :</label></td>
+													<td><input type="text" name="prix_produit" id="prix_produit" pattern="[0-9]{1,20}" required></td>
+												</tr>
+												<tr>
+													<td colspan="2" align="center"><input type="submit" value="Ajouter"></td>
+												</tr>
+											</table>	
+
+									</form>
+
+								</div>
+	
+								<div id="supprproduit">
+									
+									<form method="post" action="include/supprimer_produit.php">
+										ID du produit à supprimer : <input type="text" name="id" pattern="[0-9]{1,11}" required>
+										<input type="submit" value="Supprimer" id="submit" >
 									</form>
 								</div>
-								
-								<!-- onglet suppression de produit -->
-								<div id="supprproduit">
-									<h2>Supprimer un produit</h2>
-									<p>ID du produit à supprimer : <input type="text" name="searchsupprod" id="searchsupprod" pattern="[0-9]{1,11}" required><input type="button" value="Rechercher" id="recherche"/></p>
-									<p><div class="reponsesearch"></div></p>
-								</div>
+							</div>
 
-							</div>	
+								
+								
 						</div>
 					</div>
 				</div>
 			</div>
-			<!-- fin du contenu -->
-
-			<!-- insertion du menu -->
+			<!-- end #content -->
 			<?php include("include/menu.php"); ?>
-			
+			<!-- end #sidebar -->
 		</div>
 	</div>
 </div>
-
-<!-- pied de page -->
 <div id="footer">
-	<p>Projet PPE - 2012-2013</p>
+	<p>Projet PPE - 2012 - Ferreira ALexandre</p>
 </div>
+<!-- end #footer -->
 	
 	<script type="text/javascript" src="js/jquery.min.js"></script>
 	<script type="text/javascript" src="js/main.js"></script>
 	<script type="text/javascript" src="js/rechercheproduit.js"></script>
 </body>
 </html>
-<?php
-}
-?>
+<?php } ?>

@@ -566,7 +566,32 @@ form label
     width: 80px;
 }
 
-// mise en forme du formulaire
+
+legend /* On met un peu plus en valeur les titres des fieldset */
+{
+	font-family: Comic Sans MS, Verdana, serif;
+	color:Black;
+	font-weight:bold;
+	text-shadow: none;
+	font-size: 16px;
+}
+
+fieldset
+{
+	margin-bottom:15px; /* Une marge pour séparer les fieldset */
+	background-color:Gainsboro;
+	border: 1px black solid;
+	border-radius: 10px;
+	text-shadow: 0px 2px 2px black;
+}
+
+#contenu
+{
+	overflow-x: scroll;
+	overflow-y:hidden; 
+}
+
+/* Mise en forme du formulaire */
 
 .form_connexion {
 	margin: 10px;
@@ -591,28 +616,4 @@ form label
 
 .form_connexion table td input[type="text"]:focus, .form_connexion table td input[type="password"]:focus {
 	box-shadow: 0px 0px 5px #cccccc;
-}
-
-legend /* On met un peu plus en valeur les titres des fieldset */
-{
-	font-family: Comic Sans MS, Verdana, serif;
-	color:Black;
-	font-weight:bold;
-	text-shadow: none;
-	font-size: 16px;
-}
-
-fieldset
-{
-	margin-bottom:15px; /* Une marge pour séparer les fieldset */
-	background-color:Gainsboro;
-	border: 1px black solid;
-	border-radius: 10px;
-	text-shadow: 0px 2px 2px black;
-}
-
-#contenu
-{
-	overflow-x: scroll;
-	overflow-y:hidden; 
 }

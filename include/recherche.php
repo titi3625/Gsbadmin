@@ -8,7 +8,7 @@
 	<?php
 	include('connectionBDD.php');
 	$search = $_POST['val']; // on reprend la variable contenant le mot-clé depuis commande.php
-	$reponse12 = $bdd->query('SELECT * FROM COMMANDE NATURAL JOIN POSSEDER NATURAL JOIN MODE_PAIEMENT NATURAL JOIN STATUT_COMMANDE WHERE nom_livraison LIKE "%'.$search.'%" LIMIT 0, 20');
+	$reponse12 = $bdd->query('SELECT * FROM commande NATURAL JOIN posseder NATURAL JOIN mode_paiement NATURAL JOIN statut_commande WHERE nom_livraison LIKE "%'.$search.'%" LIMIT 0, 20');
 	?>
 </head>
 <body>

@@ -1,6 +1,6 @@
 <?php
 session_start();
-if($_SESSION['auth'] == 'no') {
+if (!isset($_SESSION['login_admin'])) {
 	header ('Location: ../');
 	exit();
 }
@@ -18,7 +18,7 @@ if($_SESSION['auth'] == 'no') {
 <div id="header">
 	<div id="menu">
 		<ul>
-			<li><a href="admin.php" class="first">Accueil</a></li>
+			<li><a href="#" class="first">Accueil</a></li>
 			<li class="current_page_item"><a href="#">Connexion</a></li>
 			<li><a href="#">S'enrenegistrer</a></li>
 			
@@ -52,7 +52,7 @@ if($_SESSION['auth'] == 'no') {
 	</div>
 </div>
 <div id="footer">
-	<p>Projet PPE - 2012-2013</p>
+	<p>Projet PPE - 2012 - Ferreira ALexandre</p>
 </div>
 <!-- end #footer -->
 </body>

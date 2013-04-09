@@ -38,7 +38,7 @@
 								// Si tout va bien, on peut continuer
 
 								// On récupère tout le contenu de la table jeux_video
-								$reponse = $bdd->query('SELECT * FROM CLIENT');
+								$reponse = $bdd->query('SELECT * FROM client');
 
 								// On affiche chaque entrée une à une
 								while ($donnees = $reponse->fetch())
@@ -81,7 +81,7 @@
 	</div>
 </div>
 <div id="footer">
-	<p>Projet PPE - 2012-2013</p>
+	<p>Projet PPE - 2012 - Ferreira ALexandre</p>
 </div>
 <!-- end #footer -->
 </body>
